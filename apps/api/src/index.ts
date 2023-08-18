@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import config from "./config/config";
 import startDBConnection from "./db";
 import { UserRouter } from "./routes";
+import handleJWT from "./middlewares/handleJWT";
 
 const app = express();
 const PORT = config.port;
@@ -11,7 +12,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Api Lafyuu");
 });
 
-app.use("/users", UserRouter);
+app.use("/users", handleJWT, UserRouter);
 
 startDBConnection();
 
