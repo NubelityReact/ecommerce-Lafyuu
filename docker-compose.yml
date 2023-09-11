@@ -6,7 +6,7 @@ services:
       dockerfile: ./apps/api/Dockerfile
       context: .
     ports:
-      - 5010:5000
+      - 5000:5000
     depends_on:
       - database
     restart: always
@@ -19,7 +19,7 @@ services:
       driver: none
     restart: always
     ports:
-      - 27020:27017
+      - 27017:27017
     volumes:
       - mongodb:/data/db
 
